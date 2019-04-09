@@ -1,1 +1,1 @@
-This Folder contains all java practise.
+This Folder contains all java practice Codes.
