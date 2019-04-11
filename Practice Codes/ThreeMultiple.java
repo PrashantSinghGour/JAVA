@@ -1,3 +1,11 @@
+////////////////////////////////////////////////////////////////////////////
+// This Code will print the all possible 3 multiples simultaneously.      //
+// for example-                                                           //
+//  input-8                                                               //
+//  output-2 x 2 x 2 =8                                                  //
+////////////////////////////////////////////////////////////////////////////
+
+
 import java.util.Scanner;
 
 class ThreeMultiple
