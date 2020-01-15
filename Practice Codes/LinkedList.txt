@@ -1,0 +1,137 @@
+//linkedlist java
+
+
+import java.io.BufferedReader;
+import java.io.IOError;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class LinkedList {
+
+		Node head;			//node head
+		static boolean flag=true;
+		
+		static class Node 
+		{
+			int data;
+			Node next;
+			
+			public Node(int data)
+			{
+				this.data=data;
+				next=null;
+			}
+			
+		}
+		
+		
+		public static LinkedList Insert(LinkedList list,int data)
+		{
+				
+			Node new_node=new Node(data);		//new node created
+			
+			
+			if(list.head==null)
+			{
+				list.head=new_node;
+			}
+			else
+			{
+				Node last=list.head;				//last refering to head
+				while(last.next!=null)			//iterating till last 
+				{
+					last=last.next;
+				}
+				last.next=new_node;				//add at last
+			}
+				return list;							//returned new list
+		}
+		
+		
+		public static void Print(LinkedList list)
+		{
+			if(list.head==null)
+			{
+				System.out.println("no linked list");
+				return;
+			}
+			
+			Node last=list.head;
+			while(last!=null)
+			{
+				System.out.print(last.data+" ");
+				last=last.next;
+			}
+		}
+		
+		public static LinkedList Delete(LinkedList list,int index)
+		{
+			
+			Node curr_node,prev = null;
+			curr_node=list.head;
+			if(index==0&& curr_node!=null)		//if it is 1st location
+			{
+				curr_node=curr_node.next;		//head shifted
+				System.out.println("Element Deleted");
+				return list;
+			}
+			
+			
+			//if it is between 0 and linkedList length
+			int counter=0;
+			while(curr_node!=null)
+			{
+				if(counter==index)		//if location is found
+				{
+					prev.next=curr_node.next;	//link prev node with next node of deleted node
+					System.out.println("Element Deleted");
+					break;
+				}
+				else				
+				{
+					prev=curr_node;		//keeping handle on previous node
+					curr_node=curr_node.next;	
+					counter++;
+				}
+			}
+			
+			if(curr_node==null)
+			{
+				System.out.println("No element found");
+			}
+			return list;
+		}
+	
+	
+	public static void main(String[] args)throws IOException
+	{
+		// TODO Auto-generated method stub
+
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		LinkedList list=new LinkedList();
+		
+		System.out.println("Enter Values to linked list (Enter -1 to break)");
+		int n=Integer.parseInt(br.readLine());
+		do
+		{
+			list=Insert(list,n);
+			System.out.println("Enter node Value");
+			n=Integer.parseInt(br.readLine());
+			
+			
+		}while(n!=-1);
+		
+//		
+//		list=Insert(list,1);
+//		list=Insert(list,2);
+//		list=Insert(list,3);
+//		list=Insert(list,4);
+		Print(list);
+		
+		Delete(list,2);
+		
+		Print(list);
+		
+	}
+
+}
